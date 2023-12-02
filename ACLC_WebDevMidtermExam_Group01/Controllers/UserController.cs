@@ -6,10 +6,10 @@ using ACLC_WebDevMidtermExam_Group01.Models;
 
 namespace ACLC_WebDevMidtermExam_Group01.Controllers
 {
-    public class FormController : Controller
+    public class UserController : Controller
     {
         private readonly MySqlDbContext _context;
-        public FormController(MySqlDbContext context)
+        public UserController(MySqlDbContext context)
         {
             _context = context;
         }
@@ -17,14 +17,14 @@ namespace ACLC_WebDevMidtermExam_Group01.Controllers
 
         public async Task<IActionResult> Index(string id)
         {
-            var joborder = from p in _context.form
-                           select p;
+            var User = from p in _context.user
+                       select p;
             if (!String.IsNullOrEmpty(id))
             {
                 try
                 {
                     int pId = Convert.ToInt32(id);
-                    joborder = joborder.Where(p => p.id == pId);
+                    User = User.Where(p => p.id == pId);
                 }
                 catch (FormatException ee)
                 {
@@ -32,9 +32,8 @@ namespace ACLC_WebDevMidtermExam_Group01.Controllers
                 }
 
             }
-            return View(await joborder.ToListAsync());
+            return View(await User.ToListAsync());
         }
-
 
         public ActionResult Create()
         {
@@ -44,13 +43,13 @@ namespace ACLC_WebDevMidtermExam_Group01.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Create([Bind()] Models.joborder joborder)
+        public ActionResult Create([Bind()] Models.User user)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _context.form.Add(joborder);
+                    _context.user.Add(user);
                     _context.SaveChanges();
                     return RedirectToAction(nameof(Index));
                 }
@@ -60,16 +59,16 @@ namespace ACLC_WebDevMidtermExam_Group01.Controllers
             {
                 return View();
             }
-            return View(joborder);
+            return View(user);
         }
 
         public ActionResult Edit(int id)
         {
-            if (id == null || _context.form == null)
+            if (id == null || _context.user == null)
             {
                 return NotFound();
             }
-            var p = _context.form.Find(id);
+            var p = _context.user.Find(id);
 
             if (p == null)
             {
@@ -81,9 +80,9 @@ namespace ACLC_WebDevMidtermExam_Group01.Controllers
         // POST: ProductController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, [Bind()] Models.joborder joborder)
+        public ActionResult Edit(int id, [Bind()] Models.User user)
         {
-            if (id != joborder.id)
+            if (id != user.id)
             {
                 return NotFound();
 
@@ -92,7 +91,7 @@ namespace ACLC_WebDevMidtermExam_Group01.Controllers
             {
                 try
                 {
-                    _context.Update(joborder);
+                    _context.Update(user);
                     _context.SaveChanges();
                     return RedirectToAction(nameof(Index));
                 }
@@ -101,22 +100,22 @@ namespace ACLC_WebDevMidtermExam_Group01.Controllers
                     return View();
                 }
             }
-            return View(joborder);
+            return View(user);
         }
         public ActionResult Delete(int id)
         {
-            Models.joborder p = _context.form.Find(id);
+            Models.User p = _context.user.Find(id);
 
             return View(p);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, [Bind()] Models.joborder joborder)
+        public ActionResult Delete(int id, [Bind()] Models.User user)
         {
 
 
-            Models.joborder p = _context.form.Find(id);
+            Models.User p = _context.user.Find(id);
 
 
             try
@@ -134,8 +133,4 @@ namespace ACLC_WebDevMidtermExam_Group01.Controllers
         }
 
     }
-
-
-
-
 }

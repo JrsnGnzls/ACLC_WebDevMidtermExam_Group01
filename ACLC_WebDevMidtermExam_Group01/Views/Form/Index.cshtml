@@ -13,9 +13,11 @@
 <table class="table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model=>model.category)</th>
+            <th>@Html.DisplayNameFor(model=>model.id)</th>
             <th>@Html.DisplayNameFor(model=>model.name)</th>
+            <th>@Html.DisplayNameFor(model=>model.category)</th>
             <th>@Html.DisplayNameFor(model=>model.date_time)</th>
+            <th>@Html.DisplayNameFor(model=>model.description)</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -30,7 +32,6 @@
                 <td>@Html.DisplayFor(modelItem=>item.description)</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.id">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.id">Details</a>
                     <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
                 </td>
             </tr>

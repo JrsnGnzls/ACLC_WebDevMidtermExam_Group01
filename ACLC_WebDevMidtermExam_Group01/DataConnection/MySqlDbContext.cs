@@ -6,6 +6,8 @@ namespace ACLC_WebDevMidtermExam_Group01.DataConnection
     public class MySqlDbContext:DbContext
     {
         public DbSet<joborder> form { get; set; }
+
+        public DbSet<User> user { get; set; }
         public MySqlDbContext(DbContextOptions<MySqlDbContext> options) : base(options) {
 
         }
