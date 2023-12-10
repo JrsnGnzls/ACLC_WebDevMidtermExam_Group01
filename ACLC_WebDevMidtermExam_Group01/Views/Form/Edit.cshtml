@@ -6,35 +6,34 @@
 
 <h1>Edit</h1>
 
-<h4>Product</h4>
+<h4>Job Order</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="id" class="control-label"></label>
-                <input asp-for="id" class="form-control" />
-                <span asp-validation-for="id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="name" class="control-label"></label>
+                <label asp-for="name" class="control-label">Name</label>
                 <input asp-for="name" class="form-control" />
                 <span asp-validation-for="name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="category" class="control-label"></label>
-                <input asp-for="category" class="form-control" />
+                <label asp-for="category" class="control-label">Category</label>
+                <select asp-for="category" class="form-select">
+                    <option value="">--Select Category--</option>
+                    <option value="Software">Software</option>
+                    <option value="Hardware">Hardware</option>
+                </select>
                 <span asp-validation-for="category" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="date_time" class="control-label"></label>
+                <label asp-for="date_time" class="control-label">Date and Time</label>
                 <input asp-for="date_time" class="form-control" />
                 <span asp-validation-for="date_time" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="description" class="control-label"></label>
-                <input asp-for="description" class="form-control" />
+                <label asp-for="description" class="control-label">Description</label>
+                <textarea asp-for="description" class="form-control" rows="3"></textarea>
                 <span asp-validation-for="description" class="text-danger"></span>
             </div>
             <div class="form-group">
