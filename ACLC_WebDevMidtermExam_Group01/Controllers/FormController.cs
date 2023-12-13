@@ -35,7 +35,12 @@ namespace ACLC_WebDevMidtermExam_Group01.Controllers
             return View(await joborder.ToListAsync());
         }
 
+        public ActionResult View(int id)
+        {
+            Models.joborder p = _context.form.Find(id);
 
+            return View(p);
+        }
         public ActionResult Create()
         {
             return View();
