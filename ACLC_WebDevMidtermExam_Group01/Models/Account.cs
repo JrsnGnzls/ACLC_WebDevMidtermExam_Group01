@@ -2,12 +2,12 @@
 
 namespace ACLC_WebDevMidtermExam_Group01.Models
 {
-    public class User
+    public class Account
     {
         [Key]
         public int? id { get; set; }
         [Required]
-        public string email { get; set; }
+        public string username { get; set; }
         [Required]
         public string password { get; set; }
     }
