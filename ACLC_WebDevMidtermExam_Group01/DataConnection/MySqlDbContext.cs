@@ -7,7 +7,7 @@ namespace ACLC_WebDevMidtermExam_Group01.DataConnection
     {
         public DbSet<joborder> form { get; set; }
 
-        public DbSet<Account> user { get; set; }
+        public DbSet<Account> Account { get; set; }
         public MySqlDbContext(DbContextOptions<MySqlDbContext> options) : base(options) {
 
         }
